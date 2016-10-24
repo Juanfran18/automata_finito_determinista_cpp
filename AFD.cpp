@@ -60,6 +60,7 @@ main()
 					break;
 				  default:
 					  novalido=1;
+					  printf("\n\n\t caracter no valido: %c",cadena[i]);
 					  break;
 				   }
 				   i++;
