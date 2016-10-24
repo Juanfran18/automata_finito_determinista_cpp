@@ -64,7 +64,7 @@ main()
 				   }
 				   i++;
 		}
-		if(actual->estado==1||actual->estado==2||actual->estado==3||novalido==1){
+		/*if(actual->estado==1||actual->estado==2||actual->estado==3||novalido==1){
 				  printf("\n\n\t ------------------------- ");
 				 printf("\n\t --- Cadena Rechazada! --- \n");
 				  printf("\t ------------------------- \n\n");
@@ -73,7 +73,18 @@ main()
 				 printf("\n\n\t ------------------------ ");
 				 printf("\n\t --- Cadena Aceptada! --- \n");
 				  printf("\t ------------------------ \n\n");
-			}
+			}*/
+	
+		if(actual->estado==3){
+			printf("\n\n\t ------------------------ ");
+			printf("\n\t --- Cadena Aceptada! --- \n");
+			printf("\t ------------------------ \n\n");
+		}else{
+			printf("\n\n\t ------------------------- ");
+			printf("\n\t --- Cadena Rechazada! --- \n");
+			printf("\t ------------------------- \n\n");
+				  }
+		}
 		getchar();
 }
 
