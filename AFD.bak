@@ -17,74 +17,89 @@ void mostrar(nodo *pt,nodo *pt2,int j,char i);
 
 main()
 {
-nodo *q0,*q1,*q2,*q3,*actual,*anterior;
-int j=0,i=0,tamano=0,novalido=0; char cadena[100];
-actual=(nodo*)malloc(sizeof(nodo));
-q0=(nodo*)malloc(sizeof(nodo));
-q1=(nodo*)malloc(sizeof(nodo));
-q2=(nodo*)malloc(sizeof(nodo));
-q3=(nodo*)malloc(sizeof(nodo));
-crear(q0,q1,q2,q3,actual,anterior);
+		nodo *q0,*q1,*q2,*q3,*actual,*anterior;
+		int j=0,i=0,tamano=0,novalido=0; char cadena[100];
+		actual=(nodo*)malloc(sizeof(nodo));
+		q0=(nodo*)malloc(sizeof(nodo));
+		q1=(nodo*)malloc(sizeof(nodo));
+		q2=(nodo*)malloc(sizeof(nodo));
+		q3=(nodo*)malloc(sizeof(nodo));
+		crear(q0,q1,q2,q3,actual,anterior);
 
-printf("\n\n\n\t AFD Que no acepte las subcadenas aa y bb\n\n");
-printf("  Ingrese Cadena: ");
-gets(cadena);
-tamano = strlen(cadena);
+		printf("\n\t Automata Finito Determinista \n");
+		printf("\t===============================\n");
+		printf("\t Carolina cayetano 0900-08-842 \n");
+		printf("\t===============================\n");
+		printf("  Ingrese Cadena: ");
+		gets(cadena);
+		tamano = strlen(cadena);
 
-while (i < tamano && novalido==0){
-    j=i+1;
-    switch(cadena[i]){
-        case 'a':
-            if(actual->a==NULL){
-                anterior=q0;
-                actual=anterior->a;
-                mostrar(anterior,actual,j,cadena[i]);
-            }else{
-                anterior=actual;
-                actual=anterior->a;
-                mostrar(anterior,actual,j,cadena[i]);
-            }                        
-            break;
-        case 'b':
-            if(actual->b==NULL){
-                anterior=q0;
-                actual=anterior->b;
-                mostrar(anterior,actual,j,cadena[i]);
-            }else{
-                anterior=actual;
-                actual=anterior->b;
-                mostrar(anterior,actual,j,cadena[i]);}                        
-            break;
-          default:
-              novalido=1;
-              break;
-           }
-           i++;
-}
-if(actual->estado==1||actual->estado==4||novalido==1){
-          printf("\n\n\t ------------------------- ");
-         printf("\n\t --- Cadena Rechazada! --- \n");
-          printf("\t ------------------------- \n\n");
-          }
-else{
-         printf("\n\n\t ------------------------ ");
-         printf("\n\t --- Cadena Aceptada! --- \n");
-          printf("\t ------------------------ \n\n");
-          }
-      getchar();
+		while (i < tamano && novalido==0){
+			j=i+1;
+			switch(cadena[i]){
+				case 'a':
+					if(actual->a==NULL){
+						anterior=q0;
+						actual=anterior->a;
+						mostrar(anterior,actual,j,cadena[i]);
+					}else{
+						anterior=actual;
+						actual=anterior->a;
+						mostrar(anterior,actual,j,cadena[i]);
+					}                        
+					break;
+				case 'b':
+					if(actual->b==NULL){
+						anterior=q0;
+						actual=anterior->b;
+						mostrar(anterior,actual,j,cadena[i]);
+					}else{
+						anterior=actual;
+						actual=anterior->b;
+						mostrar(anterior,actual,j,cadena[i]);}                        
+					break;
+				  default:
+					  novalido=1;
+					  printf("\n\n\t caracter no valido: %c",cadena[i]);
+					  break;
+				   }
+				   i++;
+		}
+		/*if(actual->estado==1||actual->estado==2||actual->estado==3||novalido==1){
+				  printf("\n\n\t ------------------------- ");
+				 printf("\n\t --- Cadena Rechazada! --- \n");
+				  printf("\t ------------------------- \n\n");
+				  }
+		else{
+				 printf("\n\n\t ------------------------ ");
+				 printf("\n\t --- Cadena Aceptada! --- \n");
+				  printf("\t ------------------------ \n\n");
+			}*/
+	
+		if(actual->estado==3){
+			printf("\n\n\t ------------------------ ");
+			printf("\n\t --- Cadena Aceptada! --- \n");
+			printf("\t ------------------------ \n\n");
+		}else{
+			printf("\n\n\t ------------------------- ");
+			printf("\n\t --- Cadena Rechazada! --- \n");
+			printf("\t ------------------------- \n\n");
+				  }
+		}
+		getchar();
 }
 
 void crear(nodo *q0,nodo *q1,nodo *q2,nodo *q3,nodo *actual, nodo *anterior)
 {
 
       q0->a=q1;
-	  q1->a=q0;
-	  q1->b=q3;
+	   q1->a=q0;
+	   q1->b=q3;
       q0->b=q2;
-	  q2->a=q2;
-	  q2->b=q3;
-	  q3->a=q2;
-	  q3->b=q3;
+	   q2->a=q2;
+	   q2->b=q3;
+	   q3->a=q2;
+	   q3->b=q3;
       q0->estado=1;
       q1->estado=2;
       q2->estado=3;

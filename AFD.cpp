@@ -76,7 +76,7 @@ main()
 				  printf("\t ------------------------ \n\n");
 			}*/
 	
-		if(actual->estado==3){
+		if(actual->estado==4){
 			printf("\n\n\t ------------------------ ");
 			printf("\n\t --- Cadena Aceptada! --- \n");
 			printf("\t ------------------------ \n\n");
@@ -84,7 +84,7 @@ main()
 			printf("\n\n\t ------------------------- ");
 			printf("\n\t --- Cadena Rechazada! --- \n");
 			printf("\t ------------------------- \n\n");
-				  }
+
 		}
 		getchar();
 }
